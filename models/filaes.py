@@ -11,6 +11,7 @@ class Filaes(models.Model):
     nombre_components = fields.Integer(string='Nombre de Components', compute='_compute_nombre_components', store=True)
 
     historic_ids = fields.One2many('filaes.historic', 'fila_id', string="Historial")
+    montepios_ids = fields.One2many('filaes.montepios', 'fila_id', string="Aportaciones")
     socios_ids = fields.Many2many('res.partner', string="Miembros")
 
     @api.depends('historic_ids')

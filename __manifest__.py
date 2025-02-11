@@ -20,6 +20,8 @@ Este módulo permite gestionar las filaes de la Asociación de Sant Jordi, inclu
         'views/filaes_views.xml',
         'views/historic_views.xml',
         'views/menu_views.xml',
+        'views/montepios_view.xml',
+        'report/informeFilaes.xml'
     ],
     'demo': [
         'demo/demo.xml',

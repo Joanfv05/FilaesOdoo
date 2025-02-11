@@ -1,0 +1,71 @@
+<odoo>
+    <!-- Informe de la filà con listado de miembros y sumatorio de montepios -->
+    <template id="report_fila_view">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+                    <div class="page">
+                        <h2>Informe de la Filà: <span t-field="doc.nom"/></h2>
+
+                        <!-- Variable para el sumatorio total -->
+                        <t t-set="total_montepios" t-value="0"/>
+
+                        <t t-foreach="sorted(doc.socios_ids, key=lambda s: (doc.historic_ids.search([('soci_id', '=', s.id)]).data_accio, s.data_naixement))" t-as="soci">
+                            <!-- Mostrar los datos del socio -->
+                            <p>
+                                <span t-field="soci.name"/> - 
+                                <span t-field="soci.data_naixement"/> - 
+                                <span t-field="soci.fila_nom"/> - 
+                                <span t-field="doc.historic_ids.search([('soci_id', '=', soci.id)]).data_accio"/>
+                            </p>
+
+                            <!-- Calcular el total de montepios del socio directamente -->
+                            <t t-set="socio_montepio" t-value="0"/>
+                            <t t-foreach="doc.montepios_ids.search([('soci_id', '=', soci.id), ('fila_id', '=', doc.id)])" t-as="historic">
+                                <t t-set="socio_montepio" t-value="socio_montepio + historic.aportacio"/>
+                            </t>
+
+                            <!-- Mostrar los montepios del socio -->
+                            <p>
+                                <strong>Aportació total: </strong>
+                                <span t-out="socio_montepio"/>
+                            </p>
+
+                            <!-- Acumular el total de los montepios -->
+                            <t t-set="total_montepios" t-value="total_montepios + socio_montepio"/>
+                        </t>
+
+                        <!-- Mostrar el sumatorio total de montepios -->
+                        <p>
+                            <strong>Sumatori total de Montepios de la Filà: </strong>
+                            <span t-out="total_montepios"/>
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Informe -->
+    <report
+        id="report_fila"
+        model="filaes.filaes"
+        string="Informe de Miembros y Sumatorio"
+        name="FilaesOdoo-main.report_fila_view"
+        file="FilaesOdoo-main.report_fila_view"
+        report_type="qweb-pdf"
+    />
+
+    <!-- Acción para el informe -->
+    <record id="action_filaes_report" model="ir.actions.report">
+        <field name="name">Informe de Filà</field>
+        <field name="model">filaes.filaes</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">FilaesOdoo-main.report_fila_view</field>
+        <field name="report_file">FilaesOdoo-main.report_fila_view</field>
+        <field name="print_report_name">Informe Filà</field>
+        <field name="binding_model_id" ref="model_filaes_filaes"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

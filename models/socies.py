@@ -10,4 +10,4 @@ class Socies(models.Model):
     )
 
     data_naixement = fields.Date(string='Data de Naixement')
-    fila_ids = fields.Many2many('filaes.filaes', string='Filaes', readonly=True)  # Bloqueamos la edición manual
+    fila_ids = fields.Many2many('filaes.filaes', string='Filaes')  # Bloqueamos la edición manual

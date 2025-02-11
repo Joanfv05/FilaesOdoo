@@ -35,4 +35,5 @@
     <menuitem id="menu_filaes" name="Filaes" parent="menu_filaes_root" action="action_filaes"/>
     <menuitem id="menu_historic" name="Historic" parent="menu_filaes_root" action="action_historic"/>
     <menuitem id="menu_socies" name="Socies" parent="menu_filaes_root" action="action_socies"/>
+    <menuitem id="menu_montepios" name="Montepios" parent="menu_filaes_root" action="action_montepios"/>
 </odoo>
