@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_filaes_filaes,filaes.filaes,model_filaes_filaes,base.group_user,1,1,1,1
+access_filaes_historic,filaes.historic,model_filaes_historic,base.group_user,1,1,1,1
+access_res_partner,res.partner,model_res_partner,base.group_user,1,1,1,1
+access_filaes_montepios,filaes.montepios,model_filaes_montepios,base.group_user,1,1,1,1

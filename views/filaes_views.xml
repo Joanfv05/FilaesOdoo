@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Tree View -->
+        <record id="view_filaes_tree" model="ir.ui.view">
+            <field name="name">filaes.filaes.tree</field>
+            <field name="model">filaes.filaes</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nom"/>
+                    <field name="cif"/>
+                    <field name="any_fundacio"/>
+                    <field name="nombre_components"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_filaes_form" model="ir.ui.view">
+            <field name="name">filaes.filaes.form</field>
+            <field name="model">filaes.filaes</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="nom"/>
+                            <field name="cif"/>
+                            <field name="any_fundacio"/>
+                            <field name="nombre_components"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Kanban View -->
+        <record id="view_filaes_kanban" model="ir.ui.view">
+            <field name="name">filaes.filaes.kanban</field>
+            <field name="model">filaes.filaes</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <strong class="o_kanban_record_title">
+                                        <field name="nom"/>
+                                    </strong>
+                                    <div>
+                                        <field name="cif"/>
+                                    </div>
+                                    <div>
+                                        <field name="nombre_components"/> membres
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Graph View -->
+        <record id="view_filaes_graph" model="ir.ui.view">
+            <field name="name">filaes.filaes.graph</field>
+            <field name="model">filaes.filaes</field>
+            <field name="arch" type="xml">
+                <graph string="Comparativa de components">
+                    <field name="nom"/>
+                    <field name="nombre_components" type="measure"/>
+                </graph>
+            </field>
+        </record>
+    </data>
+</odoo>

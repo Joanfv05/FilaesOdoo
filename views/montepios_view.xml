@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_montepios_form" model="ir.ui.view">
+        <field name="name">montepios_view.form</field>
+        <field name="model">filaes.montepios</field>
+        <field name="arch" type="xml">
+            <form string="Montepios">
+                <group>
+                    <field name="soci_id" string="DNI Soci"/>
+                    <field name="fila_id" string="Nom Filà"/>
+                    <field name="aportacio" string="Aportació"/>
+                    <field name="data_aportacio" string="Data Aportació"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_montepios_tree" model="ir.ui.view">
+        <field name="name">montepios_view.tree</field>
+        <field name="model">filaes.montepios</field>
+        <field name="arch" type="xml">
+            <tree string="Montepios">
+                <field name="soci_id" string="DNI Soci"/>
+                <field name="fila_id" string="Nom Filà"/>
+                <field name="aportacio" string="Aportació"/>
+                <field name="data_aportacio" string="Data Aportació"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_montepios" model="ir.actions.act_window">
+        <field name="name">Montepios</field>
+        <field name="res_model">filaes.montepios</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_filaes_root" name="Filaes Sant Jordi"/>
+    <menuitem id="menu_filaes" name="Filaes" parent="menu_filaes_root" action="action_filaes"/>
+    <menuitem id="menu_historic" name="Historic" parent="menu_filaes_root" action="action_historic"/>
+    <menuitem id="menu_socies" name="Socies" parent="menu_filaes_root" action="action_socies"/>
+    <menuitem id="menu_montepios" name="Montepios" parent="menu_filaes_root" action="action_montepios"/>
+</odoo>

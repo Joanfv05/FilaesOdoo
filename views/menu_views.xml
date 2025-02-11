@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Acción de ventana para Filaes -->
+    <record id="action_filaes" model="ir.actions.act_window">
+        <field name="name">Filaes</field>
+        <field name="res_model">filaes.filaes</field>
+        <field name="view_mode">tree,form,kanban,graph</field>
+    </record>
+
+    <!-- Acción de ventana para Historic -->
+    <record id="action_historic" model="ir.actions.act_window">
+        <field name="name">Historic</field>
+        <field name="res_model">filaes.historic</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Acción de ventana para Socies -->
+    <record id="action_socies" model="ir.actions.act_window">
+        <field name="name">Socies</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,kanban</field>
+    </record>
+
+     <!-- Acción de ventana para Montepios -->
+    <record id="action_montepios" model="ir.actions.act_window">
+        <field name="name">Montepios</field>
+        <field name="res_model">filaes.montepios</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menú raíz -->
+    <menuitem id="menu_filaes_root" name="Filaes Sant Jordi"/>
+
+    <!-- Submenús -->
+    <menuitem id="menu_filaes" name="Filaes" parent="menu_filaes_root" action="action_filaes"/>
+    <menuitem id="menu_historic" name="Historic" parent="menu_filaes_root" action="action_historic"/>
+    <menuitem id="menu_socies" name="Socies" parent="menu_filaes_root" action="action_socies"/>
+</odoo>
