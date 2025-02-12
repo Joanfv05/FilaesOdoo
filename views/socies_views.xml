@@ -9,7 +9,7 @@
                     <field name="name"/>
                     <field name="data_naixement"/>
                     <!-- Aquí mostramos el campo Many2many con el nombre de la fila -->
-                    <field name="fila_ids" widget="many2many_tags" options="{'color_field': 'color'}" string="Nom de la Fila"/>
+                    <field name="fila_ids" widget="many2many_tags" options="{'color_field': 'color'}" string="Nom de la Fila" readonly="1"/>
                 </tree>
             </field>
         </record>
@@ -23,7 +23,7 @@
                 <xpath expr="//field[@name='vat']" position="after">
                     <field name="data_naixement"/>
                     <!-- Aquí también mostramos el campo Many2many con el nombre de la fila -->
-                    <field name="fila_ids" widget="many2many_tags" options="{'color_field': 'color'}" string="Nom de la Fila"/>
+                    <field name="fila_ids" widget="many2many_tags" options="{'color_field': 'color'}" string="Nom de la Fila" readonly="1"/>
                 </xpath>
             </field>
         </record>
@@ -46,7 +46,7 @@
                                     </div>
                                     <div>
                                         <!-- Mostramos el nombre de la fila en el kanban -->
-                                        <field name="fila_ids" widget="many2many_tags" options="{'color_field': 'color'}" string="Nom de la Fila"/>
+                                        <field name="fila_ids" widget="many2many_tags" options="{'color_field': 'color'}" string="Nom de la Fila" readonly="1"/>
                                     </div>
                                 </div>
                             </div>

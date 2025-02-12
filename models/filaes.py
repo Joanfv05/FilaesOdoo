@@ -18,7 +18,7 @@ class Filaes(models.Model):
 
     @api.depends('historic_ids')
     def _compute_nombre_components(self):
-        """Cuenta los socios activos en la filà considerando solo su último registro en el histórico."""
+        #Cuenta los socios activos en la filà considerando solo su último registro en el histórico
         for fila in self:
             # Obtener todos los registros históricos de esta filà
             socios_historico = self.env['filaes.historic'].search([

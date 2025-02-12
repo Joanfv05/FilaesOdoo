@@ -3,39 +3,41 @@
     <data>
         <!-- Tree View -->
         <record id="view_historic_tree" model="ir.ui.view">
-            <field name="name">filaes.historic.tree</field>
-            <field name="model">filaes.historic</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="soci_id"/>
-                    <field name="fila_nom" string="Nom de la Fila"/>
-                    <field name="accio"/>
-                    <field name="data_accio"/>
-                    <field name="condicio"/>
-                    <field name="antiguitat"/>
-                </tree>
-            </field>
-        </record>
+    <field name="name">filaes.historic.tree</field>
+    <field name="model">filaes.historic</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="soci_id"/>
+            <field name="fila_nom"/>
+            <field name="accio"/>
+            <field name="data_accio"/>
+            <field name="condicio"/>
+            <field name="antiguitat"/>
+        </tree>
+    </field>
+</record>
+
 
         <!-- Form View -->
         <record id="view_historic_form" model="ir.ui.view">
-            <field name="name">filaes.historic.form</field>
-            <field name="model">filaes.historic</field>
-            <field name="arch" type="xml">
-                <form>
-                    <sheet>
-                        <group>
-                            <field name="soci_id"/>
-                            <field name="fila_id" string="Nom de la Fila"/>
-                            <field name="accio"/>
-                            <field name="data_accio"/>
-                            <field name="certificat_minusvalidesa" widget="image"/>
-                            <field name="condicio"/>
-                            <field name="antiguitat"/>
-                        </group>
-                    </sheet>
-                </form>
-            </field>
-        </record>
+    <field name="name">filaes.historic.form</field>
+    <field name="model">filaes.historic</field>
+    <field name="arch" type="xml">
+        <form>
+            <sheet>
+                <group>
+                    <field name="soci_id"/>
+                    <field name="fila_id"/>
+                    <field name="accio"/>
+                    <field name="data_accio"/>
+                    <field name="certificat_minusvalidesa" widget="image"/>
+                    <field name="condicio"/>
+                    <field name="antiguitat"/>
+                </group>
+            </sheet>
+        </form>
+    </field>
+</record>
+
     </data>
 </odoo>
