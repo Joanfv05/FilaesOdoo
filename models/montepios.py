@@ -1,6 +1,7 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
+# Clase Montepios que hereda de models.Model
 class Montepios(models.Model):
     _name = 'filaes.montepios'
 
@@ -21,7 +22,7 @@ class Montepios(models.Model):
     aportacio = fields.Float(string='Aportació', required=True)
     data_aportacio = fields.Date(string='Data Aportació', required=True)
    
-
+    # Método create para validar y crear un registro
     @api.model
     def create(self, vals):
         # Obtenemos soci_id y fila_id de los valores

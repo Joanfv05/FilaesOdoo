@@ -5,10 +5,12 @@ class Historic(models.Model):
     _name = 'filaes.historic'
     _description = 'Històric de Socis'
 
+    # Campos principales de la filà
     soci_id = fields.Many2one('res.partner', string='DNI Soci', required=True)
     fila_id = fields.Many2one('filaes.filaes', string='Filà', required=True)
     fila_nom = fields.Char(string="Nom Filà", related='fila_id.nom', store=True)
 
+    # Relaciones con otros modelos
     accio = fields.Selection([('alta', 'Alta'), ('baixa', 'Baixa')], string='Acció', required=True)
     data_accio = fields.Date(string='Data Acció Alta/Baixa', required=True)
     certificat_minusvalidesa = fields.Image(string='Certificat Minusvalidesa')
@@ -23,6 +25,7 @@ class Historic(models.Model):
 
     @api.depends('accio', 'data_accio', 'antiguitat')
     def _compute_condicio(self):
+        # Calcular la condición basada en la acción, la fecha de la acción y la antigüedad
         for record in self:
             if record.accio == 'baixa':
                 record.condicio = 'baixa'
@@ -34,6 +37,7 @@ class Historic(models.Model):
                 else:
                     record.condicio = 'actiu'
             
+            # Si el registro tiene un certificado de minusvalía, la condición es 'social'
             if record.certificat_minusvalidesa:
                 record.condicio = 'social'
 
@@ -41,6 +45,7 @@ class Historic(models.Model):
     def _compute_antiguitat(self):
         for record in self:
             if record.data_accio:
+                # Calcular la antigüedad en años a partir de la fecha de acción
                 record.antiguitat = (date.today() - record.data_accio).days // 365
             else:
                 record.antiguitat = 0
@@ -68,13 +73,13 @@ class Historic(models.Model):
         return historic
 
     def write(self, vals):
-        """Asegurar que al modificar un registro de histórico también se actualiza la relación Many2many."""
         for record in self:
             if 'accio' in vals:
                 nueva_accio = vals.get('accio')
                 fila = record.fila_id
                 soci = record.soci_id
 
+                # Gestionar la relación Many2many al actualizar la acción
                 if nueva_accio == 'alta' and fila not in soci.fila_ids:
                     soci.fila_ids = [(4, fila.id)]
 

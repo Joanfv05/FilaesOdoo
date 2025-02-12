@@ -4,12 +4,14 @@ class Filaes(models.Model):
     _name = 'filaes.filaes'
     _description = 'Filaes'
 
+    # Campos principales de la filà
     cif = fields.Char(string='CIF', required=True)
     nom = fields.Char(string='Nom', required=True)
     color = fields.Integer(string='Color Index')
     any_fundacio = fields.Date(string='Any Fundació')
     nombre_components = fields.Integer(string='Nombre de Components', compute='_compute_nombre_components', store=True)
 
+    # Relaciones con otros modelos
     historic_ids = fields.One2many('filaes.historic', 'fila_id', string="Historial")
     montepios_ids = fields.One2many('filaes.montepios', 'fila_id', string="Aportaciones")
     socios_ids = fields.Many2many('res.partner', string="Miembros")

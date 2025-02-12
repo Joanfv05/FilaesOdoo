@@ -4,6 +4,7 @@ import json
 
 class FilaesController(http.Controller):
 
+    # Ruta para filtrar socios según fila y condición
     @http.route('/filaes/socis', type='json', auth='user')
     def filter_socis(self, **kw):
         fila_id = kw.get('fila_id')
@@ -27,12 +28,14 @@ _logger = logging.getLogger(__name__)
 
 class FilaesController(http.Controller):
 
+    # Ruta para obtener los montepíos según DNI, fila y año
     @http.route('/filaes/montepios', type='http', auth='user')
     def get_montepios(self, **kw):
         dni = kw.get('dni')
         fila_id = kw.get('fila_id')
         any = kw.get('any')
         
+        # Registrar los parámetros recibidos en los logs
         _logger.info("Buscando montepios con los siguientes parámetros: DNI=%s, Fila ID=%s, Año=%s", dni, fila_id, any)
         
         domain = [
@@ -47,6 +50,7 @@ class FilaesController(http.Controller):
         if not montepios:
             _logger.info("No se encontraron montepios para los parámetros dados.")
         
+        # Construcción de la respuesta con los datos obtenidos
         data = [{'id': m.id, 'aportacio': m.aportacio, 'data_aportacio': m.data_aportacio.strftime('%Y-%m-%d')} for m in montepios]
         
         # Loguear la respuesta JSON antes de enviarla
